@@ -1,135 +1,119 @@
-<!--
-Simple "frames"-style website (index.html)
-Works on GitHub Pages: put index.html, home.html, about.html, contact.html in the same repo (root or a folder) and enable Pages.
-This file is the index page (the "frame container"). The other three files' full source is included below inside comments — copy each into separate files named exactly: home.html, about.html, contact.html
--->
+<!DOCTYPE html>
+<!-- Template by quackit.com -->
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>2 Column Frames Layout &mdash; Left Menu</title>
+		<style type="text/css">
+		
+		body{
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			height: 100%; 
+			max-height: 100%; 
+			font-family:Sans-serif;
+			line-height: 1.5em;
+		}
+		
+		#nav{
+			position: absolute;
+			top: 0;
+			bottom: 0; 
+			left: 0;
+			width: 230px; /* Width of navigation frame */
+			height: 100%;
+			overflow: hidden; /* Disables scrollbars on the navigation frame. To enable scrollbars, change "hidden" to "scroll" */
+			background: #eee;
+		}
+		
+		main{
+			position: fixed;
+			top: 0; 
+			left: 230px; /* Set this to the width of the navigation frame */
+			right: 0;
+			bottom: 0;
+			overflow: auto; 
+			background: #fff;
+		}
+		
+		.innertube{
+			margin: 15px; /* Provides padding for the content */
+		}
+		
+		p {
+			color: #555;
+		}
 
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Simple Frames Website</title>
-  <style>
-    /* Simple responsive sidebar + content area that mimics old frames */
-    :root{--sidebar-w:260px;--gap:12px}
-    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
-    .wrap{display:flex;flex-direction:row;height:100vh}
-    nav{width:var(--sidebar-w);min-width:180px;background:#0b74da;color:#fff;padding:18px;box-sizing:border-box}
-    nav h1{font-size:18px;margin:0 0 12px}
-    nav a{display:block;color:inherit;text-decoration:none;padding:8px 10px;border-radius:6px;margin-bottom:6px}
-    nav a:hover{background:rgba(255,255,255,0.08)}
-    .content{flex:1;display:flex;flex-direction:column}
-    .toolbar{background:#f3f6fb;padding:10px;border-bottom:1px solid #e0e6ef}
-    .toolbar small{color:#666}
-    /* iframe fills remaining area */
-    iframe{flex:1;border:0;width:100%}
-    /* responsive: turn nav into top bar on narrow screens */
-    @media (max-width:700px){
-      .wrap{flex-direction:column}
-      nav{width:100%;display:flex;overflow:auto}
-      nav a{margin-right:8px}
-    }
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <nav>
-      <h1>My Site</h1>
-      <!-- links open into the iframe named 'contentFrame' -->
-      <a href="home.html" target="contentFrame">Home</a>
-      <a href="about.html" target="contentFrame">About</a>
-      <a href="contact.html" target="contentFrame">Contact</a>
-      <hr style="border:none;border-top:1px solid rgba(255,255,255,0.12);margin:10px 0">
-      <a href="https://github.com/" target="_blank">GitHub</a>
-      <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
-    </nav>
-
-    <div class="content">
-      <div class="toolbar">
-        <small>Content area (acts like a frame). Tip: add your pages (home.html, about.html, contact.html) to the same folder.</small>
-      </div>
-
-      <!-- The iframe acts as a modern, supported replacement for the old <frameset>. -->
-      <iframe name="contentFrame" src="home.html" title="content frame">
-        <!-- If browser doesn't support iframe, show basic fallback -->
-        Your browser does not support iframes. Visit the pages directly: <a href="home.html">Home</a>, <a href="about.html">About</a>, <a href="contact.html">Contact</a>.
-      </iframe>
-    </div>
-  </div>
-
-  <!--
-  -----------------------------------------------------------------------------
-  Create the following files in the same folder as index.html. Copy the full contents below into the named files.
-  -----------------------------------------------------------------------------
-  FILE: home.html
-  -----------------------------------------------------------------------------
-  -->
-  <!--
-  <!doctype html>
-  <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Home - Simple Frames Site</title>
-    <style>body{font-family:system-ui,Segoe UI,Roboto,Arial;margin:20px;color:#222}h2{margin-top:0}</style>
-  </head>
-  <body>
-    <h2>Welcome</h2>
-    <p>This is the <strong>Home</strong> page. The left menu links open pages into the main frame (iframe).</p>
-    <p>Put real site content here: articles, images, or any static HTML. GitHub Pages will serve these files directly.</p>
-  </body>
-  </html>
-  -->
-
-  <!--
-  -----------------------------------------------------------------------------
-  FILE: about.html
-  -----------------------------------------------------------------------------
-  -->
-  <!--
-  <!doctype html>
-  <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>About - Simple Frames Site</title>
-    <style>body{font-family:system-ui,Segoe UI,Roboto,Arial;margin:20px;color:#222}h2{margin-top:0}</style>
-  </head>
-  <body>
-    <h2>About</h2>
-    <p>This is a minimal "frames-style" layout using an iframe. The old <frameset> element is deprecated — this approach works on modern browsers and on GitHub Pages.</p>
-    <ul>
-      <li>Static HTML files served from the repo</li>
-      <li>Links target the iframe to keep navigation persistent</li>
-    </ul>
-  </body>
-  </html>
-  -->
-
-  <!--
-  -----------------------------------------------------------------------------
-  FILE: contact.html
-  -----------------------------------------------------------------------------
-  -->
-  <!--
-  <!doctype html>
-  <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Contact - Simple Frames Site</title>
-    <style>body{font-family:system-ui,Segoe UI,Roboto,Arial;margin:20px;color:#222}h2{margin-top:0}.card{padding:10px;border:1px solid #ddd;border-radius:6px;max-width:420px}</style>
-  </head>
-  <body>
-    <h2>Contact</h2>
-    <div class="card">
-      <p><strong>Email:</strong> you@example.com</p>
-      <p><strong>Phone:</strong> +91 98765 43210</p>
-    </div>
-  </body>
-  </html>
-  -->
-
-</body>
+		nav ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+		
+		nav ul a {
+			color: darkgreen;
+			text-decoration: none;
+		}
+				
+		/*IE6 fix*/
+		* html body{
+			padding: 0 0 0 230px; /* Set the last value to the width of the navigation frame */
+		}
+		
+		* html main{ 
+			height: 100%; 
+			width: 100%; 
+		}
+		
+		</style>
+		
+		<script type="text/javascript">
+			/* =============================
+			This script generates sample text for the body content. 
+			You can remove this script and any reference to it. 
+			 ============================= */
+			var bodyText=["Remember, you are unique, just like everybody else.", "Too much agreement kills a good chat.", "Get your facts first, then you can distort them as you please.", "I intend to live forever. So far, so good.", "</p><p>A clear conscience is usually a sign of a bad memory.", "What's another word for Thesaurus?", "<h3>Heading</h3><p>Experience is something you don't get until just after you need it."]
+			function generateText(sentenceCount){
+				for (var i=0; i<sentenceCount; i++)
+				document.write(bodyText[Math.floor(Math.random()*7)]+" ")
+			}
+		</script>	
+	
+	</head>
+	
+	<body>		
+				
+		<main>
+			<div class="innertube">
+				
+				<h1>Heading</h1>
+				<p><script>generateText(300)</script></p>
+				
+			</div>
+		</main>
+	
+		<nav id="nav">
+			<div class="innertube">
+			
+			<h3>Left heading</h3>
+			<ul>
+				<li><a href="#">Link 1</a></li>
+				<li><a href="#">Link 2</a></li>
+				<li><a href="#">Link 3</a></li>
+				<li><a href="#">Link 4</a></li>
+				<li><a href="#">Link 5</a></li>
+			</ul>
+			<h3>Left heading</h3>
+			<ul>
+				<li><a href="#">Link 1</a></li>
+				<li><a href="#">Link 2</a></li>
+				<li><a href="#">Link 3</a></li>
+				<li><a href="#">Link 4</a></li>
+				<li><a href="#">Link 5</a></li>
+			</ul>
+			</div>
+		</nav>
+	
+	</body>
 </html>
