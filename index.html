@@ -37,6 +37,10 @@
             .container { flex-direction: column; }
             .nav { width: auto; height: 150px; }
         }
+        /* Family member styles */
+        .family-member { margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; }
+        .family-member h3 { margin-top: 0; color: #333; }
+        .family-member p { margin: 5px 0; }
     </style>
 </head>
 <body>
@@ -44,35 +48,30 @@
         <!-- Left Navigation (replaces nav frame) -->
         <nav class="nav">
             <ul>
-                <li><a href="all" onclick="loadContent('home')">Home</a></li>
-                <li><a href="kt.html" onclick="loadContent('about')">T. Kadiramma</a></li>
-                <li><a href="ct.html" onclick="loadContent('projects')">T. Chengappa</a></li>
-                <li><a href="rt.html" onclick="loadContent('contact')">T. Ramadevi</a></li>
-                <li><a href="pt.html" onclick="loadContent('contact')">T. Pujasri</a></li>
-                <li><a href="tt.html" onclick="loadContent('contact')">T. Tejasri</a></li>
-                <li><a href="st.html" onclick="loadContent('contact')">T. Shivaansh</a></li>
+                <li><a href="#" onclick="loadContent('home')">Home</a></li>
+                <li><a href="#" onclick="loadContent('kadiramma')">T. Kadiramma</a></li>
+                <li><a href="#" onclick="loadContent('chengappa')">T. Chengappa</a></li>
+                <li><a href="#" onclick="loadContent('ramadevi')">T. Ramadevi</a></li>
+                <li><a href="#" onclick="loadContent('pujasri')">T. Pujasri</a></li>
+                <li><a href="#" onclick="loadContent('tejasri')">T. Tejasri</a></li>
+                <li><a href="#" onclick="loadContent('shivaansh')">T. Shivaansh</a></li>
             </ul>
         </nav>
-        
+       
         <!-- Right Section: Header + Main + Footer -->
         <div class="main-section">
             <!-- Top Header -->
             <header class="header">
                 <h1>CT Family Data</h1>
             </header>
-            
+           
             <!-- Scrollable Main Content -->
             <main class="content-area" id="main-content">
                 <h2 id="page-title">Welcome</h2>
-                <p>T. Kadiramma</p>
-                <p>T. Chengappa</p>
-                <p>T. Ramadevi</p>
-                <p>T. Pujasri</p>
-                <p>T. Tejasri</p>
-                <p>T. Shivaansh</p>
+                <p>This is the family data dashboard. Click on a name in the navigation to view details.</p>
                 <!-- Default content; JS will swap this -->
             </main>
-            
+           
             <!-- Bottom Footer -->
             <footer class="footer">
                 <p>&copy; updated by CT on 22-11-2025.</p>
@@ -80,6 +79,87 @@
         </div>
     </div>
 
-
+    <script>
+        // JavaScript to dynamically load content into the main area (mimics frames without page reloads)
+        function loadContent(section) {
+            event.preventDefault(); // Prevent default link behavior (no new tab/page navigation)
+            const content = document.getElementById('main-content');
+            const title = document.getElementById('page-title');
+            
+            // Define content for each section (customize with real family data as needed)
+            const sections = {
+                home: `
+                    <h2>Welcome to CT Family Data</h2>
+                    <p>This dashboard maintains records for the CT family members. Below is a quick overview:</p>
+                    <ul>
+                        <li><a href="#" onclick="loadContent('kadiramma')">T. Kadiramma</a></li>
+                        <li><a href="#" onclick="loadContent('chengappa')">T. Chengappa</a></li>
+                        <li><a href="#" onclick="loadContent('ramadevi')">T. Ramadevi</a></li>
+                        <li><a href="#" onclick="loadContent('pujasri')">T. Pujasri</a></li>
+                        <li><a href="#" onclick="loadContent('tejasri')">T. Tejasri</a></li>
+                        <li><a href="#" onclick="loadContent('shivaansh')">T. Shivaansh</a></li>
+                    </ul>
+                `,
+                kadiramma: `
+                    <div class="family-member">
+                        <h3>T. Kadiramma</h3>
+                        <p><strong>Relation:</strong> Matriarch / Founder</p>
+                        <p><strong>Date of Birth:</strong> [Add Date, e.g., 1945-03-15]</p>
+                        <p><strong>Occupation:</strong> Homemaker / Family Historian</p>
+                        <p><strong>Notes:</strong> Dedicated to preserving family traditions and stories.</p>
+                    </div>
+                `,
+                chengappa: `
+                    <div class="family-member">
+                        <h3>T. Chengappa</h3>
+                        <p><strong>Relation:</strong> Patriarch</p>
+                        <p><strong>Date of Birth:</strong> [Add Date, e.g., 1940-07-22]</p>
+                        <p><strong>Occupation:</strong> Retired Farmer / Business Owner</p>
+                        <p><strong>Notes:</strong> Known for his wisdom and community leadership.</p>
+                    </div>
+                `,
+                ramadevi: `
+                    <div class="family-member">
+                        <h3>T. Ramadevi</h3>
+                        <p><strong>Relation:</strong> Daughter</p>
+                        <p><strong>Date of Birth:</strong> [Add Date, e.g., 1965-11-10]</p>
+                        <p><strong>Occupation:</strong> Teacher</p>
+                        <p><strong>Notes:</strong> Passionate educator and family caregiver.</p>
+                    </div>
+                `,
+                pujasri: `
+                    <div class="family-member">
+                        <h3>T. Pujasri</h3>
+                        <p><strong>Relation:</strong> Granddaughter</p>
+                        <p><strong>Date of Birth:</strong> [Add Date, e.g., 1995-05-20]</p>
+                        <p><strong>Occupation:</strong> Software Engineer</p>
+                        <p><strong>Notes:</strong> Tech-savvy and helps maintain digital records.</p>
+                    </div>
+                `,
+                tejasri: `
+                    <div class="family-member">
+                        <h3>T. Tejasri</h3>
+                        <p><strong>Relation:</strong> Granddaughter</p>
+                        <p><strong>Date of Birth:</strong> [Add Date, e.g., 1998-02-14]</p>
+                        <p><strong>Occupation:</strong> Artist / Designer</p>
+                        <p><strong>Notes:</strong> Creative soul, captures family moments through art.</p>
+                    </div>
+                `,
+                shivaansh: `
+                    <div class="family-member">
+                        <h3>T. Shivaansh</h3>
+                        <p><strong>Relation:</strong> Grandson</p>
+                        <p><strong>Date of Birth:</strong> [Add Date, e.g., 2005-08-30]</p>
+                        <p><strong>Occupation:</strong> Student</p>
+                        <p><strong>Notes:</strong> Future leader, active in sports and studies.</p>
+                    </div>
+                `
+            };
+            
+            // Update title and content
+            title.textContent = section.charAt(0).toUpperCase() + section.slice(1).replace(/([A-Z])/g, ' $1'); // Capitalize title
+            content.innerHTML = sections[section] || '<p>Family member details not yet added.</p>';
+        }
+    </script>
 </body>
 </html>
