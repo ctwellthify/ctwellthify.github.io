@@ -77,20 +77,6 @@
         </div>
     </div>
 
-    <script>
-        // Simple JS to mimic frame "loading" without separate files
-        function loadContent(section) {
-            const content = document.getElementById('main-content');
-            const title = document.getElementById('page-title');
-            const sections = {
-                home: '<h2>Welcome Home</h2><p>Your personal site dashboard.</p>',
-                about: '<h2>About Me</h2><p>Bio and story here.</p>',
-                projects: '<h2>Projects</h2><p>List your work.</p>',
-                contact: '<h2>Contact</h2><p>Form or details.</p>'
-            };
-            title.textContent = section.charAt(0).toUpperCase() + section.slice(1);
-            content.innerHTML = sections[section] || '<p>Content not found.</p>';
-        }
-    </script>
+
 </body>
 </html>
