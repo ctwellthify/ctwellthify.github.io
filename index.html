@@ -3,33 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CT</title>
+    <title>CT - Personal Website</title>
+    <style>
+        /* Modern CSS Layout: Flexbox for frames-like structure */
+        html, body {
+            height: 100%; margin: 0; padding: 0; font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex; height: 100vh; /* Full viewport height */
+        }
+        .nav {
+            width: 200px; background-color: #f0f0f0; border-right: 1px solid #ccc; overflow-y: auto;
+        }
+        .main-section {
+            flex: 1; display: flex; flex-direction: column; /* Stack header/main/footer vertically */
+        }
+        .header {
+            height: 100px; background-color: #007bff; color: white; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #ccc;
+        }
+        .content-area {
+            flex: 1; overflow-y: auto; padding: 20px; background-color: white;
+        }
+        .footer {
+            height: 50px; background-color: #333; color: white; display: flex; align-items: center; justify-content: center; border-top: 1px solid #ccc;
+        }
+        /* Navigation styles */
+        .nav ul { list-style: none; padding: 20px 0; margin: 0; }
+        .nav li { margin: 10px 0; }
+        .nav a { display: block; padding: 10px 15px; text-decoration: none; color: #333; }
+        .nav a:hover { background-color: #007bff; color: white; }
+        /* Responsive: Stack on mobile */
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            .nav { width: auto; height: 150px; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Note: HTML Framesets are deprecated in HTML5. Consider using CSS Flexbox or Grid for modern layouts. 
-         This example uses frames for demonstration purposes only. Create separate HTML files for each frame src. -->
-    
-    <frameset cols="200,*" frameborder="1" border="1">
-        <!-- Left frame for navigation -->
-        <frame src="navigation.html" name="nav" scrolling="yes" noresize>
+    <div class="container">
+        <!-- Left Navigation (replaces nav frame) -->
+        <nav class="nav">
+            <ul>
+                <li><a href="#home" onclick="loadContent('home')">Home</a></li>
+                <li><a href="#about" onclick="loadContent('about')">About</a></li>
+                <li><a href="#projects" onclick="loadContent('projects')">Projects</a></li>
+                <li><a href="#contact" onclick="loadContent('contact')">Contact</a></li>
+            </ul>
+        </nav>
         
-        <!-- Right section with rows for header, main content, and footer -->
-        <frameset rows="100,*,50" frameborder="0" border="0">
-            <!-- Top frame for header -->
-            <frame src="header.html" name="header" scrolling="no" noresize>
+        <!-- Right Section: Header + Main + Footer -->
+        <div class="main-section">
+            <!-- Top Header -->
+            <header class="header">
+                <h1>Your Name</h1>
+            </header>
             
-            <!-- Middle frame for main content -->
-            <frame src="main.html" name="main" scrolling="yes">
+            <!-- Scrollable Main Content -->
+            <main class="content-area" id="main-content">
+                <h2 id="page-title">Welcome</h2>
+                <p>This is the main content area. Click navigation links to update it dynamically (no page reloads).</p>
+                <!-- Default content; JS will swap this -->
+            </main>
             
-            <!-- Bottom frame for footer -->
-            <frame src="footer.html" name="footer" scrolling="no" noresize>
-        </frameset>
-    </frameset>
-    
-    <!-- Fallback content for browsers that don't support frames -->
-    <noframes>
-        <p>Your browser does not support frames. Please upgrade to a modern browser.</p>
-        <a href="main.html">Visit the main page</a>
-    </noframes>
+            <!-- Bottom Footer -->
+            <footer class="footer">
+                <p>&copy; 2025 Your Name. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Simple JS to mimic frame "loading" without separate files
+        function loadContent(section) {
+            const content = document.getElementById('main-content');
+            const title = document.getElementById('page-title');
+            const sections = {
+                home: '<h2>Welcome Home</h2><p>Your personal site dashboard.</p>',
+                about: '<h2>About Me</h2><p>Bio and story here.</p>',
+                projects: '<h2>Projects</h2><p>List your work.</p>',
+                contact: '<h2>Contact</h2><p>Form or details.</p>'
+            };
+            title.textContent = section.charAt(0).toUpperCase() + section.slice(1);
+            content.innerHTML = sections[section] || '<p>Content not found.</p>';
+        }
+    </script>
 </body>
 </html>
