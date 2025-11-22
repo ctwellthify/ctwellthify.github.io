@@ -3,49 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CT - Family Data</title>
+    <title>CT Family Data - GitHub Pages Site</title>
     <style>
-        /* Modern CSS Layout: Flexbox for frames-like structure */
+        /* Modern CSS: Flexbox for responsive layout */
         html, body {
             height: 100%; margin: 0; padding: 0; font-family: Arial, sans-serif;
         }
         .container {
-            display: flex; height: 100vh; /* Full viewport height */
+            display: flex; height: 100vh;
         }
         .nav {
-            width: 200px; background-color: #f0f0f0; border-right: 1px solid #ccc; overflow-y: auto;
+            width: 250px; background-color: #f0f0f0; border-right: 1px solid #ccc; overflow-y: auto; padding: 10px;
         }
         .main-section {
-            flex: 1; display: flex; flex-direction: column; /* Stack header/main/footer vertically */
+            flex: 1; display: flex; flex-direction: column;
         }
         .header {
-            height: 50px; background-color: #333; color: white; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #ccc;
+            height: 60px; background-color: #333; color: white; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #ccc;
+            font-size: 18px; font-weight: bold;
         }
         .content-area {
             flex: 1; overflow-y: auto; padding: 20px; background-color: white;
         }
         .footer {
-            height: 50px; background-color: #333; color: white; display: flex; align-items: center; justify-content: center; border-top: 1px solid #ccc;
+            height: 50px; background-color: #333; color: white; display: flex; align-items: center; justify-content: center; border-top: 1px solid #ccc; font-size: 14px;
         }
         /* Navigation styles */
-        .nav ul { list-style: none; padding: 20px 0; margin: 0; }
+        .nav ul { list-style: none; padding: 0; margin: 0; }
         .nav li { margin: 10px 0; }
-        .nav a { display: block; padding: 10px 15px; text-decoration: none; color: #333; }
+        .nav a { display: block; padding: 10px; text-decoration: none; color: #333; border-radius: 4px; }
         .nav a:hover { background-color: #007bff; color: white; }
-        /* Responsive: Stack on mobile */
-        @media (max-width: 768px) {
-            .container { flex-direction: column; }
-            .nav { width: auto; height: 150px; }
-        }
-        /* Family member styles */
+        /* Family member cards */
         .family-member { margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; }
         .family-member h3 { margin-top: 0; color: #333; }
         .family-member p { margin: 5px 0; }
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            .nav { width: auto; height: 150px; overflow-x: auto; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Left Navigation (replaces nav frame) -->
+        <!-- Left Navigation -->
         <nav class="nav">
             <ul>
                 <li><a href="#" onclick="loadContent('home')">Home</a></li>
@@ -58,107 +59,96 @@
             </ul>
         </nav>
        
-        <!-- Right Section: Header + Main + Footer -->
+        <!-- Main Section: Header + Content + Footer -->
         <div class="main-section">
-            <!-- Top Header -->
             <header class="header">
-                <h1>CT Family Data</h1>
+                CT Family Data
             </header>
            
-            <!-- Scrollable Main Content -->
             <main class="content-area" id="main-content">
                 <h2 id="page-title">Welcome</h2>
-                <p>This is the family data dashboard. Click on a name in the navigation to view details.</p>
-                <!-- Default content; JS will swap this -->
+                <p>This is a simple GitHub Pages website for maintaining CT family records. Click on names in the navigation to view details. Hosted for free on GitHub!</p>
+                <p>To set this up: Create a GitHub repo, add this as <code>index.html</code>, enable GitHub Pages in settings, and it's live at <code>https://yourusername.github.io/repo-name</code>.</p>
             </main>
            
-            <!-- Bottom Footer -->
             <footer class="footer">
-                <p>&copy; updated by CT on 22-11-2025.</p>
+                <p>&copy; 2025 CT Family. Updated: November 22, 2025 | <a href="https://github.com/yourusername/repo-name" style="color: #ccc; text-decoration: none;">View on GitHub</a></p>
             </footer>
         </div>
     </div>
 
     <script>
-        // JavaScript to dynamically load content into the main area (mimics frames without page reloads)
         function loadContent(section) {
-            event.preventDefault(); // Prevent default link behavior (no new tab/page navigation)
+            event.preventDefault();
             const content = document.getElementById('main-content');
             const title = document.getElementById('page-title');
             
-            // Define content for each section (customize with real family data as needed)
             const sections = {
                 home: `
                     <h2>Welcome to CT Family Data</h2>
-                    <p>This dashboard maintains records for the CT family members. Below is a quick overview:</p>
+                    <p>This GitHub Pages site preserves our family history. Overview of members:</p>
                     <ul>
-                        <li><a href="#" onclick="loadContent('kadiramma')">T. Kadiramma</a></li>
-                        <li><a href="#" onclick="loadContent('chengappa')">T. Chengappa</a></li>
-                        <li><a href="#" onclick="loadContent('ramadevi')">T. Ramadevi</a></li>
-                        <li><a href="#" onclick="loadContent('pujasri')">T. Pujasri</a></li>
-                        <li><a href="#" onclick="loadContent('tejasri')">T. Tejasri</a></li>
-                        <li><a href="#" onclick="loadContent('shivaansh')">T. Shivaansh</a></li>
+                        <li><a href="#" onclick="loadContent('kadiramma')">T. Kadiramma</a> - Matriarch</li>
+                        <li><a href="#" onclick="loadContent('chengappa')">T. Chengappa</a> - Patriarch</li>
+                        <li><a href="#" onclick="loadContent('ramadevi')">T. Ramadevi</a> - Daughter</li>
+                        <li><a href="#" onclick="loadContent('pujasri')">T. Pujasri</a> - Granddaughter</li>
+                        <li><a href="#" onclick="loadContent('tejasri')">T. Tejasri</a> - Granddaughter</li>
+                        <li><a href="#" onclick="loadContent('shivaansh')">T. Shivaansh</a> - Grandson</li>
                     </ul>
+                    <p><em>Pro tip: Fork this repo to customize and host your own version!</em></p>
                 `,
                 kadiramma: `
                     <div class="family-member">
                         <h3>T. Kadiramma</h3>
-                        <p><strong>Relation:</strong> Matriarch / Founder</p>
-                        <p><strong>Date of Birth:</strong> [Add Date, e.g., 1945-03-15]</p>
-                        <p><strong>Occupation:</strong> Homemaker / Family Historian</p>
-                        <p><strong>Notes:</strong> Dedicated to preserving family traditions and stories.</p>
+                        <p><strong>Relation:</strong> Matriarch</p>
+                        <p><strong>DOB:</strong> [e.g., 1945-03-15]</p>
+                        <p><strong>Notes:</strong> Family storyteller and guardian of traditions.</p>
                     </div>
                 `,
                 chengappa: `
                     <div class="family-member">
                         <h3>T. Chengappa</h3>
                         <p><strong>Relation:</strong> Patriarch</p>
-                        <p><strong>Date of Birth:</strong> [Add Date, e.g., 1940-07-22]</p>
-                        <p><strong>Occupation:</strong> Retired Farmer / Business Owner</p>
-                        <p><strong>Notes:</strong> Known for his wisdom and community leadership.</p>
+                        <p><strong>DOB:</strong> [e.g., 1940-07-22]</p>
+                        <p><strong>Notes:</strong> Wise leader and community pillar.</p>
                     </div>
                 `,
                 ramadevi: `
                     <div class="family-member">
                         <h3>T. Ramadevi</h3>
                         <p><strong>Relation:</strong> Daughter</p>
-                        <p><strong>Date of Birth:</strong> [Add Date, e.g., 1965-11-10]</p>
-                        <p><strong>Occupation:</strong> Teacher</p>
-                        <p><strong>Notes:</strong> Passionate educator and family caregiver.</p>
+                        <p><strong>DOB:</strong> [e.g., 1965-11-10]</p>
+                        <p><strong>Notes:</strong> Dedicated teacher and caregiver.</p>
                     </div>
                 `,
                 pujasri: `
                     <div class="family-member">
                         <h3>T. Pujasri</h3>
                         <p><strong>Relation:</strong> Granddaughter</p>
-                        <p><strong>Date of Birth:</strong> [Add Date, e.g., 1995-05-20]</p>
-                        <p><strong>Occupation:</strong> Software Engineer</p>
-                        <p><strong>Notes:</strong> Tech-savvy and helps maintain digital records.</p>
+                        <p><strong>DOB:</strong> [e.g., 1995-05-20]</p>
+                        <p><strong>Notes:</strong> Tech enthusiast managing digital archives.</p>
                     </div>
                 `,
                 tejasri: `
                     <div class="family-member">
                         <h3>T. Tejasri</h3>
                         <p><strong>Relation:</strong> Granddaughter</p>
-                        <p><strong>Date of Birth:</strong> [Add Date, e.g., 1998-02-14]</p>
-                        <p><strong>Occupation:</strong> Artist / Designer</p>
-                        <p><strong>Notes:</strong> Creative soul, captures family moments through art.</p>
+                        <p><strong>DOB:</strong> [e.g., 1998-02-14]</p>
+                        <p><strong>Notes:</strong> Artistic talent capturing family memories.</p>
                     </div>
                 `,
                 shivaansh: `
                     <div class="family-member">
                         <h3>T. Shivaansh</h3>
                         <p><strong>Relation:</strong> Grandson</p>
-                        <p><strong>Date of Birth:</strong> [Add Date, e.g., 2005-08-30]</p>
-                        <p><strong>Occupation:</strong> Student</p>
-                        <p><strong>Notes:</strong> Future leader, active in sports and studies.</p>
+                        <p><strong>DOB:</strong> [e.g., 2005-08-30]</p>
+                        <p><strong>Notes:</strong> Bright student and athlete.</p>
                     </div>
                 `
             };
             
-            // Update title and content
-            title.textContent = section.charAt(0).toUpperCase() + section.slice(1).replace(/([A-Z])/g, ' $1'); // Capitalize title
-            content.innerHTML = sections[section] || '<p>Family member details not yet added.</p>';
+            title.textContent = section.charAt(0).toUpperCase() + section.slice(1).replace(/([A-Z])/g, ' $1');
+            content.innerHTML = sections[section] || '<p>Details coming soon.</p>';
         }
     </script>
 </body>
